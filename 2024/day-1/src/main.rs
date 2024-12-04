@@ -37,8 +37,8 @@ fn main() -> io::Result<()> {
     // * Sort both the vectors from smallest to largest for processing
     left.sort();
     right.sort();
-    println!("Sorted Left: {:?}", left);
-    println!("Sorted Right: {:?}", right);
+    // println!("Sorted Left: {:?}", left);
+    // println!("Sorted Right: {:?}", right);
 
     // * Check that both vectors are the same length
     // * storing left's length for looping later
@@ -53,7 +53,12 @@ fn main() -> io::Result<()> {
         let left_num: i32 = left[i];
         let right_num: i32 = right[i];
 
-        let distance_between: i32 = left_num - right_num;
+        let distance_between: i32;
+        if left_num > right_num {
+            distance_between = left_num - right_num;
+        } else {
+            distance_between = right_num - left_num;
+        }
         total_distance += distance_between;
         // println!("{}", total_distance);
     }
