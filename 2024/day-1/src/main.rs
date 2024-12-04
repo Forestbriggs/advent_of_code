@@ -5,7 +5,7 @@ use std::io::BufReader;
 
 fn main() -> io::Result<()> {
     // * Open input text file and initialize a new BufReader
-    let f: File = File::open("./src/sample_input.txt")?;
+    let f: File = File::open("./src/input.txt")?;
     let reader: BufReader<File> = BufReader::new(f);
 
     // * Initialize vector to hold left and right side input from text file
