@@ -18,7 +18,7 @@ fn main() -> io::Result<()> {
             .filter_map(|s| s.parse::<i32>().ok())
             .collect();
 
-        let res: bool = safe_report(&num_parts);
+        let res: bool = safe_correctable(&num_parts);
 
         if res {
             safe_reports += 1;
@@ -32,4 +32,16 @@ fn main() -> io::Result<()> {
 fn safe_report(report: &[i32]) -> bool {
     report.is_sorted_by(|a, b| a > b && a.abs_diff(*b) <= 3)
         || report.is_sorted_by(|a, b| a < b && b.abs_diff(*a) <= 3)
+}
+
+fn safe_correctable(report: &[i32]) -> bool {
+    for i in 0..report.len() {
+        let mut copy = report.to_vec();
+        copy.remove(i);
+        if safe_report(&copy) {
+            return true;
+        }
+    }
+
+    return false;
 }
