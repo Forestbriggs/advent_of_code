@@ -1,6 +1,5 @@
 use regex::Regex;
 use std::fs::File;
-// use std::io;
 use std::io::prelude::*;
 use std::io::BufReader;
 use std::io::Error;
@@ -9,7 +8,7 @@ fn main() -> Result<(), Error> {
     let f: File = File::open("./src/input.txt")?;
     let reader = BufReader::new(f);
 
-    let re = Regex::new(r"mul\((\d{1,3}),(\d{1,3})\)").unwrap();
+    let re = Regex::new(r"mul\((\d{1,3}),(\d{1,3})\))").unwrap();
     let mut matches: Vec<(String, String)> = Vec::new();
 
     let mut result: i32 = 0;
